@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quanto falta para atingir a média</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+            font-family: Verdana, Geneva, Tahoma, sans-serif;
+        }
+
+        body{
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+
+        .container{
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 20px;
+        }
+
+        input{
+            padding: 10px;
+            border: 1px solid black;
+            border-radius: 10px;
+            outline: none;
+            width: 35%;
+        }
+
+        button{
+            padding: 10px 40px;
+            border: 3px solid rgb(0, 0, 88);
+            border-radius: 10px;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    <!--precisa: qual a nota média da sua instuição de ensino-->
+    <!--notas 1 e 2-->
+    <div class="container">
+        <h1>Calcule quantos pontos você deve atingir</h1>
+        <input type="number" id="objetivo" placeholder="Qual média quer alcançar"/>
+        <input type="text" id="materia" placeholder="Qual a disciplina"/>
+        <input type="number" id="nota1" placeholder="Sua nota do 1º trimestre"/>
+        <input type="number" id="nota2" placeholder="Sua nota do 2º trimestre"/>
+        <button onclick="calcular()">Calcular</button>
+        <span id="resultado"></span>
+    </div>
+</body>
+<script>
+    function calcular(){ 
+        var disciplina = document.getElementById("materia").value
+        var mediaPrincipal = document.getElementById("objetivo").value
+        var primeiraNota = document.getElementById("nota1").value
+        var segundaNota = document.getElementById("nota2").value
+
+        var precisaAtingr = mediaPrincipal * 3;
+        var somaNotasAluno = parseFloat(primeiraNota) + parseFloat(segundaNota);
+        var quantoFalta = precisaAtingr - somaNotasAluno;
+        var formatada = quantoFalta.toFixed(1);
+
+        if(formatada < 0.1){
+            document.querySelector("#resultado").innerHTML = `Você já atingiu a média em ${disciplina}`;
+        }
+
+        else{
+            document.querySelector("#resultado").innerHTML = `Faltam ${formatada} pontos para atingir a média em ${disciplina}`;
+        }
+    }
+</script>
+</html>

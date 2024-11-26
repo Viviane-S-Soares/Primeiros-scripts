@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Criar com javascript</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+            font-family: Verdana, Geneva, Tahoma, sans-serif;
+        }
+
+        body{
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            background-image: url(https://i.pinimg.com/originals/ad/15/57/ad1557172e923dc5332f24d41f010043.jpg);
+            background-repeat: no-repeat;
+            background-size: cover;
+            width: 100%;
+            height: 100%;
+        }
+
+        header{
+            background-color: rgb(36, 111, 248);
+            color: white;
+            width: 100%;
+            padding: 1.3em 0;
+            text-align: center;
+        }
+
+        button{
+            padding: 10px;
+            border: 1px solid black;
+            border-radius: 5px;
+            background-color: green;
+            color: white;
+            font-size: 1.3em;
+            margin: 2em 0;
+            cursor: pointer;
+        }
+
+        ul{
+            list-style-type: none;
+        }
+
+        li{
+            font-size: 20px;
+            font-weight: bold;
+        }
+
+        .cursor-lapis{
+            cursor: url(./lapis.svg), auto;
+        }
+    </style>
+</head>
+<body class="cursor-lapis">
+    <header>
+        <h1>Controle de notas</h1>
+    </header>
+    <button id="btn" onclick="calcularMedia()">Iniciar</button>
+    <ul>
+       <li><h2 id="textinho"></h2></li>
+       <li><p id="materia"></p></li>
+       <li><p id="resultado"></p></li>
+       <li><span id="status"></span></li>
+    </ul>   
+</body>
+<script>
+    var nome = window.prompt('Digite seu nome:');
+    window.alert('Bem vindo(a) ' + nome);
+
+    const botao = document.getElementById("btn")
+
+    function calcularMedia(){
+       var disciplina = window.prompt('Digite o nome da matéria:');
+       var primeiraNota = parseFloat(window.prompt('Digite a primeira nota:'));
+       var segundaNota = parseFloat(window.prompt('Digite a segunda nota:'));
+       var terceiraNota = parseFloat(window.prompt('Digite a terceira nota:'));
+       var media = (primeiraNota + segundaNota + terceiraNota) /3;
+
+       document.querySelector('#textinho').innerText = "Seu resultado é: ";
+       document.querySelector('#materia').innerHTML = disciplina;
+       document.querySelector('#resultado').innerHTML = media;
+
+       if(media >= 6){
+        document.querySelector('#status').innerHTML = "aprovado";
+       }
+       else{
+        document.querySelector('#status').innerHTML = "Reprovado";
+       }
+    }
+</script>
+</html>

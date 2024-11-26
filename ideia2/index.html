@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>mensagens</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+
+        body{
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            font-family: Verdana, Geneva, Tahoma, sans-serif;
+            background-image: linear-gradient(120deg, yellow, blue, purple);
+            background-size: cover;
+        }
+
+        .box{
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 20px;
+            background-color: white;
+            padding: 20px 30px;
+            border-radius: 10px;
+        }
+
+        input{
+            padding: 10px 12px;
+            border-radius: 8px;
+            border: none;
+            box-shadow: -5px 5px 10px black;
+            outline: none;
+            width: 230px;
+        }
+
+        button{
+            padding: 12px 18px;
+            border-radius: 15px;
+            border: none;
+            background-color: white;
+            box-shadow: -5px 5px 10px black;
+            cursor: pointer;
+            width: 220px;
+        }
+
+        span{
+            max-width: 220px;
+        }
+
+        h3{
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+    <div class="box">
+        <h2>Situação escolar</h2>
+        <input type="text" id="nome" placeholder="Seu nome"/>
+        <input type="text" id="materia" placeholder="Materia"/>
+        <input type="number" id="nota1" placeholder="Sua primeira nota"/>
+        <input type="number" id="nota2" placeholder="Sua segunda nota"/>
+        <input type="number" id="nota3" placeholder="Sua terceira nota"/>
+        <button id="calcular" onclick="mostrarResultado()">Calcular</button>
+        <span id="resultado"></span>
+        <h3 id="status"></h3>
+    </div>
+</body>
+<script>
+        function mostrarResultado(){
+        var nome = document.getElementById('nome').value;
+        var disciplina = document.getElementById('materia').value;
+        var primeiraNota = document.getElementById('nota1').value;
+        var segundaNota = document.getElementById('nota2').value;
+        var terceiraNota = document.getElementById('nota3').value;
+
+    
+        var media = (parseFloat(nota1.value) + parseFloat(nota2.value) + parseFloat(nota3.value))/3;
+        var formatada =  media.toFixed(1)
+        document.querySelector("#resultado").innerHTML =  `O aluno(a) ${nome} está com uma média de ${formatada} em ${disciplina}`
+
+        if (media >= 6){
+            document.querySelector("#status").innerHTML = "Aprovado";
+        }
+        else {
+            document.querySelector("#status").innerHTML = "Reprovado";
+        }
+    }
+</script>
+</html>
